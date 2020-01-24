@@ -1,9 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Smurf from './Smurf';
 
-const SmurfList = (props) => {
+const SmurfList = () => {
+    const smurfs = useSelector(state => state.getSmurfs.smurfs)
 
     return (
     <table className="smurf-list">
@@ -12,7 +13,7 @@ const SmurfList = (props) => {
             <th>Age</th>
             <th>Weight</th>
         </tr>
-            {props.smurfs.map(smurf => (
+            {smurfs.map(smurf => (
                 <Smurf 
                 smurf={smurf}
                 key={smurf.id}
@@ -21,9 +22,5 @@ const SmurfList = (props) => {
     </table>
     )
 }
-const mapStateToProps = state => {
-    return {
-        smurfs: state.getSmurfs.smurfs
-    }
-}
-export default connect(mapStateToProps)(SmurfList)
+
+export default SmurfList

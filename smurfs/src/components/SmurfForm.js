@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { postSmurf } from '../actions/postSmurf';
 import { getSmurfs } from '../actions/getSmurfs';
 
-const SmurfForm = (props) => {
-    
+const SmurfForm = () => {
+    const dispatch = useDispatch()
+
     const [smurf, setSmurf] = useState({
         name: '',
         age: '',
         height: '',
         id: ''
     })
+    
     useEffect(() => {
-        props.getSmurfs()
+        dispatch(getSmurfs())
     }, [smurf])
     
     const handleSubmit = event => {
         event.preventDefault();
-        props.postSmurf(smurf);
+        dispatch(postSmurf(smurf));
         setSmurf({
             name: '',
             age: '',
@@ -78,10 +80,4 @@ const SmurfForm = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        smurfs: state.getSmurfs.smurfs
-    }
-}
-
-export default connect(mapStateToProps, {postSmurf, getSmurfs})(SmurfForm);
+export default SmurfForm;
