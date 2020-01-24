@@ -3,7 +3,18 @@ import {
     GET_SMURFS_SUCCESS, 
     GET_SMURFS_FAILURE 
 } from '../actions/getSmurfs';
-import { POST_SMURF_START, POST_SMURF_SUCCESS, POST_SMURF_FAILURE } from "../actions/postSmurf"
+
+import { 
+    POST_SMURF_START, 
+    POST_SMURF_SUCCESS, 
+    POST_SMURF_FAILURE 
+} from '../actions/postSmurf';
+
+import {
+    DELETE_SMURF_START,
+    DELETE_SMURF_SUCCESS,
+    DELETE_SMURF_FAILURE
+} from '../actions/deleteSmurf';
 
 const initialState = {
     smurfs: [],
@@ -48,6 +59,22 @@ export const getSmurfs = (state = initialState, action) => {
                 ...state,
                 posting: false,
                 error: action.payload
+            }
+        case DELETE_SMURF_START:
+            return {
+                ...state,
+                deleting: true
+            }
+        case DELETE_SMURF_SUCCESS:
+            return {
+                ...state,
+                smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload)
+            }
+        case DELETE_SMURF_FAILURE:
+            return {
+                ...state,
+                errror: action.payload,
+                deleting: false
             }
         default:
             return state

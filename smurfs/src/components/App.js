@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import "./App.css";
 import { getSmurfs } from '../actions/getSmurfs';
 import { postSmurf } from '../actions/postSmurf';
+import { deleteSmurf } from '../actions/deleteSmurf';
 
 const App = (props) => {
   const [smurf, setSmurf] = useState({
@@ -41,7 +42,10 @@ const App = (props) => {
       <div>Start inside of your `src/index.js` file!</div>
       <div>Have fun!</div>
       {props.smurfs.map(smurf => (
-        <p>{smurf.name}</p>
+        <div>
+          <p>{smurf.name}</p>
+          <button onClick={() => props.deleteSmurf(smurf.id)}>Delete</button>
+        </div>
       ))}
       <form onSubmit={handleSubmit}>
         <label>Name</label>
@@ -76,4 +80,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs, postSmurf})(App);
+export default connect(mapStateToProps, {getSmurfs, postSmurf, deleteSmurf})(App);
