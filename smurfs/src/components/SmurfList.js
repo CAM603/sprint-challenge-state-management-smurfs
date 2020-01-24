@@ -1,18 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { deleteSmurf } from '../actions/deleteSmurf';
+import Smurf from './Smurf';
 
 const SmurfList = (props) => {
+
     return (
-        <div>
+    <table className="smurf-list">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Weight</th>
+        </tr>
             {props.smurfs.map(smurf => (
-                <div>
-                <p>{smurf.name}</p>
-                <button onClick={() => props.deleteSmurf(smurf.id)}>Delete</button>
-                </div>
+                <Smurf 
+                smurf={smurf}
+                key={smurf.id}
+                />
             ))}
-        </div>
+    </table>
     )
 }
 const mapStateToProps = state => {
@@ -20,4 +26,4 @@ const mapStateToProps = state => {
         smurfs: state.getSmurfs.smurfs
     }
 }
-export default connect(mapStateToProps, {deleteSmurf})(SmurfList)
+export default connect(mapStateToProps)(SmurfList)

@@ -34,29 +34,47 @@ const SmurfForm = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input 
-                onChange={handleChange}
-                name="name"
-                value={smurf.name}
-                />
-                <label>Age</label>
-                <input 
-                onChange={handleChange}
-                name="age"
-                value={smurf.age}
-                />
-                <label>Height</label>
-                <input 
-                onChange={handleChange}
-                name="height"
-                value={smurf.height}
-                />
-                <button>Add</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <table>
+                <tr>
+                    <th>
+                        <label>Name</label>
+                    </th>
+                    <th>
+                        <label>Age</label>
+                    </th>
+                    <th>
+                        <label>Height</label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input 
+                        onChange={handleChange}
+                        name="name"
+                        value={smurf.name}
+                        />
+                    </td>
+                    <td>
+                        <input 
+                        onChange={handleChange}
+                        name="age"
+                        value={smurf.age}
+                        />
+                    </td>
+                    <td>
+                        <input 
+                        onChange={handleChange}
+                        name="height"
+                        value={smurf.height}
+                        />
+                    </td>
+                    <td className="button-container">
+                        <button className="button">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     )
 }
 

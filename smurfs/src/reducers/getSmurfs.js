@@ -1,3 +1,5 @@
+import { initialState } from './data'
+
 import { 
     GET_SMURFS_START, 
     GET_SMURFS_SUCCESS, 
@@ -15,13 +17,6 @@ import {
     DELETE_SMURF_SUCCESS,
     DELETE_SMURF_FAILURE
 } from '../actions/deleteSmurf';
-
-const initialState = {
-    smurfs: [],
-    loading: false,
-    error: '',
-    posting: false
-}
 
 export const getSmurfs = (state = initialState, action) => {
     switch(action.type) {

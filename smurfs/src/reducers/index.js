@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import { getSmurfs } from './getSmurfs';
-// import { postSmurf } from './postSmurf';
+import { postSmurf } from './postSmurf';
 
 const rootReducer = combineReducers({
     getSmurfs,
-    // postSmurf
+    postSmurf
 })
 
 export default rootReducer;
