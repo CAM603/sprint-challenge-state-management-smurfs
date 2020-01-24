@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
+import { getSmurfs } from './getSmurfs';
 
+const rootReducer = combineReducers({
+    getSmurfs
 })
 
 export default rootReducer;
