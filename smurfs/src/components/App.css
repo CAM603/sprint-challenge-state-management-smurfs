@@ -23,10 +23,15 @@ tr:nth-child(odd) {
   border: solid white 1px;
   background-color: white;
 }
-
+.smurf-list {
+  min-width: 400px;
+  margin-top: 20px;
+}
 .container {
   width: 100%;
   display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
   justify-content: space-evenly;
 }
 
@@ -40,6 +45,7 @@ tr:nth-child(odd) {
 form {
   display: flex;
   justify-content: center;
+  min-width: 300px;
 }
 form th {
   padding: 3px;
